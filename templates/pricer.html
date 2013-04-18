@@ -1,0 +1,79 @@
+<html>
+
+<head>
+	<title>Pricer Module</title>
+</head>
+
+<body>
+	<h2>American Option</h2>
+	
+	<p> {{ pmodel.name }}</p>
+	
+	<form action="." method="POST">
+	{% csrf_token %}
+		
+		<table>
+			{{ form.as_table }}
+		</table>
+		
+		<!-- 
+		<label>
+			<div>Evaluation Date</div>
+			<input type="text" name="evaluation_date" value="{{ evaluation_date }}">
+		</label>
+		
+		<label>
+			<div>Settlement Date</div>
+			<input type="text" name="settlement_date" value="{{ settlement_date }}">
+		</label>
+		
+		<label>
+			<div>Risk Factor</div>
+			<input type="text" name="risk_factor" value="{{ risk_factor }}">
+		</label>
+		
+		<label>
+			<div>Volatility</div>
+			<input type="text" name="volatility" value="{{ volatility }}">
+		</label>
+		
+		<label>
+			<div>Reference Value</div>
+			<input type="text" name="reference_value" value="{{ reference_value }}">
+		</label>
+		
+		<label>
+			<div>Put</div>
+			<input type="text" name="put" value="{{ put }}">
+		</label>
+		 -->
+			
+			<div class="error">{{ error }}</div>
+
+			<input type="submit">
+	</form>
+
+		<hr />
+	
+	{% if report_list %}
+		<table cellpadding=2 border=1>
+		<tr>
+			<th>Method Name</th>
+			<th>Value</th>
+			<th>Actual Error</th>
+		</tr>
+			
+			{% for k, v in report_list.iteritems %}
+			<tr>
+			<td>{{ k }}</td>
+			{% for i in v%}
+				<td>{{ i }}</td>
+			{% endfor %}
+			</tr>
+			{% endfor %}	
+		</table>
+		
+	{% endif %}
+</body>
+
+</html>
